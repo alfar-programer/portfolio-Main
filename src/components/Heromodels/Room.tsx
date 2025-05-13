@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.5.3 optimized-room.glb --typescript
 */
 
 import * as THREE from 'three';
-import { useGLTF, useTexture } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import type { GLTF } from 'three-stdlib';
 import React from 'react';
 
@@ -50,14 +50,11 @@ type GLTFResult = GLTF & {
   };
 };
 
-export function Room(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/models/optimized-room.glb') as GLTFResult;
-  const matcapTexture = useTexture('/images/textures/mat1.png');
+export function Room(props: React.JSX.IntrinsicElements['group']) {
+  const { nodes, materials } = useGLTF('/models/optimized-room.glb') as unknown as GLTFResult;
+  // const matcapTexture = useTexture('/images/textures/mat1.png');
   
   const curtainMaterial = new THREE.MeshPhongMaterial({ color: '#d90429' });
-  const bodyMaterial = new THREE.MeshPhongMaterial({
-    map: matcapTexture
-  });
 
   return (
     <group {...props} dispose={null}>
@@ -93,6 +90,7 @@ export function Room(props: JSX.IntrinsicElements['group']) {
       <mesh geometry={nodes.vires_blinn1_0.geometry} material={materials.blinn1} />
       <mesh geometry={nodes.window_blinn1_0.geometry} material={materials.blinn1} />
       <mesh geometry={nodes.window4_phong1_0.geometry} material={materials.phong1} />
+      {/* Rest of your meshes */}
     </group>
   );
 }
