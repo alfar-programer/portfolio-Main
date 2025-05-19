@@ -6,7 +6,6 @@ import HeeroExperience from '../components/Heromodels/HeeroExperience';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import AnimatedCounter from '../components/AnimatedCounter';
-import CanvasAnimation from '../components/CanvasAnimation';
 
 interface WordType {
   text: string;
