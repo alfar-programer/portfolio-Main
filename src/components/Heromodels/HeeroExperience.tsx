@@ -4,12 +4,14 @@ import { useMediaQuery } from "react-responsive";
 import { Room } from "./Room";
 import Herolights from "./Herolights";
 import React from 'react';
+import Particles from "./Particles";
 
 const HeeroExperience: React.FC = () => {
   const isTablet = useMediaQuery({ query: '(max-width:1024px)' });
   const isMobile = useMediaQuery({ query: '(max-width:768px)' });
 
   return (
+    
     <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
       <OrbitControls 
         enablePan={false}
@@ -21,6 +23,7 @@ const HeeroExperience: React.FC = () => {
       />
 
       <Herolights />
+      <Particles count={80} />
       <group 
         scale={isMobile ? 0.7 : 1}
         position={[0, -3.5, 0]}
